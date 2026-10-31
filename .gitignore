@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+private-agents/
+_source/
+SPEC.md
+CLAUDE.md

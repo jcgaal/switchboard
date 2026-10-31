@@ -1,0 +1,21 @@
+name: unknown-language
+display_name: Broken agent
+description: Points the menu and default at a language it never defines.
+responder: echo
+default_language: fr-FR
+time_limit_seconds: 60
+languages:
+  en-US:
+    tag: en
+    greeting: "Hello."
+    closing_time_limit: "Goodbye."
+    error_apology: "Sorry."
+    default_voice: Amazon:Joanna-Neural
+language_menu:
+  enabled: true
+  options: { "3": de-DE }
+  prompts:
+    en-US:
+      - { language: en-US, text: "Press 3." }
+transcription: { provider: Deepgram, model: nova-3-general }
+dashboard: { headline: "Broken", subline: "Broken" }

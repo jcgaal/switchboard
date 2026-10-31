@@ -1,0 +1,77 @@
+name: intake
+display_name: Example Co intake line
+description: Asks four short questions about the caller's company, then confirms.
+default_language: es-MX
+time_limit_seconds: 180
+max_reply_tokens: 300
+
+languages:
+  en-US:
+    tag: en
+    greeting: "Hi, this is the Example Co assistant. This call is transcribed. I'll ask four quick questions. Who am I speaking with, and where do you work?"
+    closing_time_limit: "We've reached the time limit. Thanks for calling."
+    error_apology: "Sorry, something went wrong. Could you say that again?"
+    default_voice: Amazon:Joanna-Neural
+  es-MX:
+    tag: es
+    greeting: "Hola, soy el asistente de Example Co. Esta llamada se transcribe. Le haré cuatro preguntas rápidas. ¿Con quién tengo el gusto y en qué empresa trabaja?"
+    closing_time_limit: "Llegamos al límite de tiempo. Gracias por llamar."
+    error_apology: "Disculpe, ocurrió un problema. ¿Podría repetirlo?"
+    default_voice: Amazon:Mia-Neural
+
+language_menu:
+  enabled: true
+  timeout_seconds: 3
+  options: { "1": es-MX, "2": en-US }
+  prompts:
+    en-US:
+      - { language: es-MX, text: "Para español presione 1." }
+      - { language: en-US, text: "To continue in English, please stay on the line." }
+    es-MX:
+      - { language: en-US, text: "For English press 2." }
+      - { language: es-MX, text: "Para continuar en español, permanezca en la línea." }
+
+transcription:
+  provider: Deepgram
+  model: nova-3-general
+  language: multi
+  hints:
+    - Example Co
+    - Salesforce
+    - HubSpot
+    - Segment
+    - Twilio
+    - Customer.io
+    - Braze
+    - Klaviyo
+    - Mailchimp
+    - ActiveCampaign
+    - Marketo
+    - Pipedrive
+    - Zoho
+    - PostHog
+    - Mixpanel
+    - Amplitude
+    - Google Analytics
+    - GA4
+    - Looker
+    - Tableau
+    - Power BI
+    - BigQuery
+    - Snowflake
+    - Shopify
+    - Stripe
+    - Intercom
+    - Zendesk
+    - WhatsApp
+    - CRM
+    - CDP
+
+pronunciation:
+  "Example Co": "Example Company"
+
+dashboard:
+  headline: "Talk to the agent."
+  subline: "Call the line. The agent asks four short questions about your company. Calls last up to three minutes."
+
+prompt: prompt.md

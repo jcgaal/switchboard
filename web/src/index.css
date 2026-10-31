@@ -1,0 +1,968 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 40 33% 96%;
+  --foreground: 222 47% 14%;
+  --border: 36 20% 84%;
+  --card: 40 40% 98.5%;
+  --card-foreground: 222 47% 14%;
+  --card-border: 36 20% 84%;
+  --sidebar: 40 30% 94%;
+  --sidebar-foreground: 222 47% 14%;
+  --sidebar-border: 36 20% 84%;
+  --sidebar-primary: 221 72% 38%;
+  --sidebar-primary-foreground: 40 40% 98%;
+  --sidebar-accent: 38 45% 90%;
+  --sidebar-accent-foreground: 222 47% 14%;
+  --sidebar-ring: 221 72% 38%;
+  --popover: 40 40% 98.5%;
+  --popover-foreground: 222 47% 14%;
+  --popover-border: 36 20% 84%;
+  --primary: 221 72% 38%;
+  --primary-foreground: 40 40% 98%;
+  --secondary: 38 45% 90%;
+  --secondary-foreground: 222 47% 14%;
+  --muted: 38 30% 91%;
+  --muted-foreground: 222 14% 42%;
+  --accent: 36 92% 52%;
+  --accent-foreground: 222 47% 12%;
+  --destructive: 4 70% 48%;
+  --destructive-foreground: 40 40% 98%;
+  --input: 36 18% 78%;
+  --ring: 221 72% 38%;
+  --chart-1: 221 72% 38%;
+  --chart-2: 36 92% 52%;
+  --chart-3: 168 50% 36%;
+  --chart-4: 4 70% 48%;
+  --chart-5: 222 14% 42%;
+
+  --app-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 40 33% 96%;
+  --foreground: 222 47% 14%;
+  --border: 36 20% 84%;
+  --card: 40 40% 98.5%;
+  --card-foreground: 222 47% 14%;
+  --card-border: 36 20% 84%;
+  --sidebar: 40 30% 94%;
+  --sidebar-foreground: 222 47% 14%;
+  --sidebar-border: 36 20% 84%;
+  --sidebar-primary: 221 72% 38%;
+  --sidebar-primary-foreground: 40 40% 98%;
+  --sidebar-accent: 38 45% 90%;
+  --sidebar-accent-foreground: 222 47% 14%;
+  --sidebar-ring: 221 72% 38%;
+  --popover: 40 40% 98.5%;
+  --popover-foreground: 222 47% 14%;
+  --popover-border: 36 20% 84%;
+  --primary: 221 72% 38%;
+  --primary-foreground: 40 40% 98%;
+  --secondary: 38 45% 90%;
+  --secondary-foreground: 222 47% 14%;
+  --muted: 38 30% 91%;
+  --muted-foreground: 222 14% 42%;
+  --accent: 36 92% 52%;
+  --accent-foreground: 222 47% 12%;
+  --destructive: 4 70% 48%;
+  --destructive-foreground: 40 40% 98%;
+  --input: 36 18% 78%;
+  --ring: 221 72% 38%;
+  --chart-1: 221 72% 38%;
+  --chart-2: 36 92% 52%;
+  --chart-3: 168 50% 36%;
+  --chart-4: 4 70% 48%;
+  --chart-5: 222 14% 42%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type="search"]::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s steps(1) infinite;
+}
+.tile {
+  background-image: radial-gradient(hsl(221 72% 38% / 0.09) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* The monitor sits in a light environment, and a white board
+ * holds the wave at the top and the dark panels below. Each
+ * color lives here, so the dark theme only swaps tokens. */
+.monitor-env {
+  --env-bg: #e8e6e1;
+  --env-glow: #f4f3f0;
+  --panel-white: #ffffff;
+  --panel-soft: #f7f6f3;
+  --panel-taupe: #efece7;
+  --ink: #111111;
+  --ink-muted: #8b8985;
+  --line-light: rgba(0, 0, 0, 0.06);
+  --line-white: rgba(255, 255, 255, 0.6);
+  --glass: rgba(255, 255, 255, 0.8);
+  --glass-soft: rgba(255, 255, 255, 0.4);
+  --cta-bg: #1a1a1a;
+  --cta-bg-hover: #000000;
+  --cta-ink: #ffffff;
+  --caller: #605e5a;
+  --agent: #c8c5be;
+  /* Wave layers paint back to front as "r g b alpha", with
+   * the caller in darker grays and the agent in lighter
+   * ones, so the wave shows who is talking at a look. */
+  --wave-idle-1: 236 234 229 0.9;
+  --wave-idle-2: 226 224 218 0.5;
+  --wave-idle-3: 218 216 210 0.3;
+  --wave-agent-1: 204 201 194 0.95;
+  --wave-agent-2: 186 183 176 0.6;
+  --wave-agent-3: 170 167 160 0.4;
+  --wave-caller-1: 96 94 90 0.85;
+  --wave-caller-2: 128 126 121 0.55;
+  --wave-caller-3: 150 148 143 0.35;
+
+  color-scheme: light;
+  min-height: 100dvh;
+  padding: 16px;
+  background-color: var(--env-bg);
+  background-image: radial-gradient(circle at 50% 0%, var(--env-glow) 0%, var(--env-bg) 100%);
+  font-family: var(--app-font-sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+/* In the dark theme the frame and the hero turn charcoal, the
+ * caller layer turns the lightest and the agent sits in the
+ * middle, so the speaker still stands out against the bg. */
+@media (prefers-color-scheme: dark) {
+  .monitor-env {
+    --env-bg: #0b0b0c;
+    --env-glow: #1c1c1e;
+    --panel-white: #111113;
+    --panel-soft: #1a1a1c;
+    --panel-taupe: #242426;
+    --ink: #f5f5f7;
+    --ink-muted: #8e8e93;
+    --line-light: rgba(255, 255, 255, 0.08);
+    --line-white: rgba(255, 255, 255, 0.08);
+    --glass: rgba(28, 28, 30, 0.8);
+    --glass-soft: rgba(28, 28, 30, 0.45);
+    --cta-bg: #f5f5f7;
+    --cta-bg-hover: #ffffff;
+    --cta-ink: #111111;
+    --caller: #e5e5ea;
+    --agent: #636366;
+    --wave-idle-1: 44 44 46 0.9;
+    --wave-idle-2: 52 52 55 0.5;
+    --wave-idle-3: 60 60 63 0.3;
+    --wave-agent-1: 72 72 76 0.95;
+    --wave-agent-2: 88 88 92 0.6;
+    --wave-agent-3: 104 104 108 0.4;
+    --wave-caller-1: 200 200 205 0.85;
+    --wave-caller-2: 160 160 166 0.55;
+    --wave-caller-3: 130 130 136 0.35;
+
+    color-scheme: dark;
+  }
+}
+.monitor-env .font-mono {
+  font-family: var(--app-font-mono);
+}
+.monitor-dashboard {
+  max-width: 1720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 16px;
+  padding: 16px;
+  background: var(--panel-white);
+  border-radius: 32px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.monitor-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 4px;
+}
+.monitor-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.monitor-wordmark span {
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: -0.01em;
+}
+.monitor-topbar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.monitor-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line-light);
+  border-radius: 100px;
+  background: var(--panel-soft);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.monitor-pill strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.monitor-pill:hover {
+  background: var(--panel-taupe);
+  color: var(--ink);
+}
+.monitor-pill:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.monitor-pill-revealed strong {
+  font-family: var(--app-font-mono);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--ink-muted);
+}
+.monitor-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 100px;
+  background: var(--cta-bg);
+  color: var(--cta-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+.monitor-cta:hover {
+  transform: translateY(-1px);
+  background: var(--cta-bg-hover);
+}
+.monitor-cta:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.monitor-pill-static {
+  cursor: default;
+  text-transform: lowercase;
+}
+
+.monitor-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 260px;
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--panel-soft);
+}
+.monitor-wave {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+}
+.voice-wave {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.voice-picker {
+  width: min(100%, 520px);
+}
+.monitor-hero-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.monitor-hero-title {
+  flex: 1 1 320px;
+  max-width: 560px;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.monitor-hero-title span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--ink-muted);
+}
+.monitor-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+/* The voice picker reuses the glass pills of the hero chips, and
+ * paints the chosen engine in the same ink as the Fork button
+ * so the two controls in the banner read as one family. */
+.voice-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 24px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.voice-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.voice-picker-caption {
+  padding-left: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.engine-toggle {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line-light);
+  border-radius: 100px;
+  background: var(--panel-soft);
+}
+.engine-toggle button {
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.engine-toggle button:hover {
+  color: var(--ink);
+}
+.engine-toggle button.is-active {
+  background: var(--cta-bg);
+  color: var(--cta-ink);
+}
+.voice-picker.is-locked .engine-toggle button,
+.voice-picker.is-locked select {
+  cursor: not-allowed;
+}
+.voice-picker.is-locked .engine-toggle button:not(.is-active),
+.voice-picker.is-locked select {
+  opacity: 0.7;
+}
+.engine-toggle button:focus-visible,
+.voice-select select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.voice-select {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 200px;
+  min-width: 0;
+  align-items: center;
+}
+.voice-select span {
+  position: absolute;
+  left: 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+.voice-select select {
+  width: 100%;
+  min-width: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 8px 32px 8px 72px;
+  border: 1px solid var(--line-light);
+  border-radius: 100px;
+  background: var(--panel-soft);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.voice-select select:hover {
+  background: var(--panel-taupe);
+}
+.voice-select svg {
+  position: absolute;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+.monitor-hero-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.monitor-hero-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--line-white);
+  border-radius: 24px;
+  background: var(--glass-soft);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+.monitor-timer {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.monitor-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.monitor-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.monitor-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.monitor-hero-note {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+}
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--line-light);
+}
+.swatch-caller {
+  background: var(--caller);
+}
+.swatch-agent {
+  background: var(--agent);
+}
+.swatch-idle {
+  background: transparent;
+  border-color: var(--ink-muted);
+}
+
+.monitor-panels {
+  display: grid;
+  gap: 16px;
+  min-height: 0;
+}
+/* The live panels stay dark like a code editor, so the transcript
+ * bubbles and the colored JSON retain the contrast they had in
+ * the first monitor, inside the light frame around them. */
+.dark-panel {
+  display: flex;
+  flex-direction: column;
+  height: min(640px, 80dvh);
+  min-height: 460px;
+  overflow: hidden;
+  border: 1px solid #2c2c2e;
+  border-radius: 24px;
+  background: #161618;
+  color: #f5f5f7;
+  color-scheme: dark;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+.dark-panel-heading {
+  min-height: 72px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #2c2c2e;
+}
+.dark-panel-footer {
+  min-height: 56px;
+  flex-shrink: 0;
+  border-top: 1px solid #2c2c2e;
+}
+.live-dot {
+  animation: live-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes live-glow {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(50, 215, 75, 0.4);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 4px rgba(50, 215, 75, 0.2);
+  }
+}
+
+/* Line numbers come from a CSS counter instead of React, so
+ * every event block can be memoized on its own while the
+ * numbering still counts through the whole stream. */
+.code-lines {
+  counter-reset: line;
+}
+.code-line {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+}
+.code-line::before {
+  counter-increment: line;
+  content: counter(line);
+  padding-right: 16px;
+  text-align: right;
+  color: rgba(142, 142, 147, 0.4);
+  user-select: none;
+}
+
+.monitor-env ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.monitor-env ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.monitor-env ::-webkit-scrollbar-thumb {
+  background: #38383a;
+  border-radius: 4px;
+}
+.monitor-env ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (min-width: 640px) {
+  .monitor-env {
+    padding: 24px;
+  }
+  .monitor-dashboard {
+    padding: 24px;
+    gap: 20px;
+  }
+  .monitor-hero {
+    padding: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .monitor-env {
+    height: 100dvh;
+    min-height: 760px;
+  }
+  .monitor-dashboard {
+    height: 100%;
+  }
+  .monitor-hero {
+    min-height: 0;
+    height: clamp(260px, 32vh, 320px);
+  }
+  .monitor-panels {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .dark-panel {
+    height: auto;
+    min-height: 0;
+  }
+}

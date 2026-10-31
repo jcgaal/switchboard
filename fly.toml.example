@@ -1,0 +1,31 @@
+# Copy to fly.toml, set app to a name of your own, then put the keys
+# in with fly secrets set. Calls hold sockets for minutes, so one
+# machine runs at all times and never stops or scales to zero.
+app = "your-switchboard"
+primary_region = "iad"
+kill_timeout = "200s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  AGENT = "intake"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = false
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

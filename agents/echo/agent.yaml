@@ -1,0 +1,23 @@
+name: echo
+display_name: Echo line
+description: Repeats what the caller says. Needs no model, so it is the quickest way to test a phone number.
+responder: echo
+default_language: en-US
+time_limit_seconds: 120
+
+languages:
+  en-US:
+    tag: en
+    greeting: "This is the echo line. Say something and I will repeat it."
+    closing_time_limit: "That is the time limit for this test call. Goodbye."
+    error_apology: "Sorry, something went wrong. Please try again."
+    default_voice: Amazon:Joanna-Neural
+
+transcription:
+  provider: Deepgram
+  model: nova-3-general
+  language: multi
+
+dashboard:
+  headline: "Test the line."
+  subline: "Call the number and say anything. The line repeats it back, so you can check audio, transcription and the event stream without a model."

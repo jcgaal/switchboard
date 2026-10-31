@@ -1,0 +1,14 @@
+name: model-without-prompt
+display_name: Broken agent
+description: Uses a model but has no prompt file.
+default_language: en-US
+time_limit_seconds: 60
+languages:
+  en-US:
+    tag: en
+    greeting: "Hello."
+    closing_time_limit: "Goodbye."
+    error_apology: "Sorry."
+    default_voice: Amazon:Joanna-Neural
+transcription: { provider: Deepgram, model: nova-3-general }
+dashboard: { headline: "Broken", subline: "Broken" }

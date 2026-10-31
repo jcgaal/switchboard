@@ -1,0 +1,26 @@
+name: reminder
+display_name: Northside Clinic reminders
+description: Confirms, reschedules or cancels a caller's upcoming appointment.
+default_language: en-US
+time_limit_seconds: 120
+max_reply_tokens: 200
+
+languages:
+  en-US:
+    tag: en
+    greeting: "Hi, this is the Northside Clinic reminder line. This call is transcribed. I can confirm, move or cancel your next appointment. May I have your full name?"
+    closing_time_limit: "We've reached the time limit. Please call the clinic if you need anything else. Goodbye."
+    error_apology: "Sorry, something went wrong on my side. Could you say that again?"
+    default_voice: Amazon:Joanna-Neural
+
+transcription:
+  provider: Deepgram
+  model: nova-3-general
+  language: multi
+  hints: [Northside Clinic, appointment, reschedule, cancel]
+
+dashboard:
+  headline: "Confirm an appointment."
+  subline: "Call the line and confirm, move or cancel a sample appointment. Calls last up to two minutes."
+
+prompt: prompt.md

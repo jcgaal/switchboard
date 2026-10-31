@@ -1,0 +1,14 @@
+.git
+.github
+node_modules
+dist
+.env
+.env.*
+!.env.example
+private-agents
+SPEC.md
+CLAUDE.md
+docs
+tests
+*.avif
+*.png
